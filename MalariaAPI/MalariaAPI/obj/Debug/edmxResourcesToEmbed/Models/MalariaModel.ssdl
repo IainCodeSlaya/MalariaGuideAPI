@@ -1,0 +1,291 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MalariaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Access_Level">
+    <Key>
+      <PropertyRef Name="Access_Level_ID" />
+    </Key>
+    <Property Name="Access_Level_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Access_Level_Description" Type="varchar" MaxLength="50" />
+    <Property Name="User_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="Cause">
+    <Key>
+      <PropertyRef Name="Cause_ID" />
+    </Key>
+    <Property Name="Cause_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Cause_Name" Type="varchar" MaxLength="50" />
+    <Property Name="Malaria_Type_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="Country_ID" />
+    </Key>
+    <Property Name="Country_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Country_Name" Type="varchar" MaxLength="50" />
+    <Property Name="Malaria_Type_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="Infection_Cycle">
+    <Key>
+      <PropertyRef Name="Infection_Cycle_ID" />
+    </Key>
+    <Property Name="Infection_Cycle_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PhaseA" Type="varchar" MaxLength="32" />
+    <Property Name="DescriptionA" Type="varchar" MaxLength="250" />
+    <Property Name="PhaseB" Type="varchar" MaxLength="32" />
+    <Property Name="DescriptionB" Type="varchar" MaxLength="250" />
+    <Property Name="PhaseC" Type="varchar" MaxLength="32" />
+    <Property Name="DescriptionC" Type="varchar" MaxLength="250" />
+    <Property Name="PhaseD" Type="varchar" MaxLength="32" />
+    <Property Name="DescriptionD" Type="varchar" MaxLength="250" />
+    <Property Name="Malaria_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="Malaria">
+    <Key>
+      <PropertyRef Name="Malaria_ID" />
+    </Key>
+    <Property Name="Malaria_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Malaria_Background" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="Malaria_Type">
+    <Key>
+      <PropertyRef Name="Malaria_Type_ID" />
+    </Key>
+    <Property Name="Malaria_Type_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Malaria_Type_Name" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Preventative_Measure">
+    <Key>
+      <PropertyRef Name="Preventative_Measure_ID" />
+    </Key>
+    <Property Name="Preventative_Measure_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Measure_Description" Type="varchar" MaxLength="50" />
+    <Property Name="Malaria_Type_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="Quick_Fact">
+    <Key>
+      <PropertyRef Name="Quick_Fact_ID" />
+    </Key>
+    <Property Name="Quick_Fact_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Fact" Type="varchar" MaxLength="250" />
+    <Property Name="Malaria_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="Region">
+    <Key>
+      <PropertyRef Name="Region_ID" />
+    </Key>
+    <Property Name="Region_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Region_Name" Type="varchar" MaxLength="50" />
+    <Property Name="Call_Centre_Number" Type="varchar" MaxLength="32" />
+    <Property Name="Country_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="Symptom">
+    <Key>
+      <PropertyRef Name="Symptom_ID" />
+    </Key>
+    <Property Name="Symptom_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Symptom_Name" Type="varchar" MaxLength="50" />
+    <Property Name="Symptom_Description" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Symptom_Type">
+    <Key>
+      <PropertyRef Name="Malaria_Type_ID" />
+      <PropertyRef Name="Symptom_ID" />
+    </Key>
+    <Property Name="Malaria_Type_ID" Type="int" Nullable="false" />
+    <Property Name="Symptom_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="User_ID" />
+    </Key>
+    <Property Name="User_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="User_Name" Type="varchar" MaxLength="50" />
+    <Property Name="User_Surname" Type="varchar" MaxLength="50" />
+    <Property Name="User_Contact_Number" Type="varchar" MaxLength="32" />
+    <Property Name="User_Email" Type="varchar" MaxLength="50" />
+    <Property Name="User_Password" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Vaccination">
+    <Key>
+      <PropertyRef Name="Vaccination_ID" />
+    </Key>
+    <Property Name="Vaccination_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Vaccination_Description" Type="varchar" MaxLength="50" />
+    <Property Name="Malaria_ID" Type="int" />
+  </EntityType>
+  <Association Name="FK__Access_Le__User___300424B4">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Access_Level" Type="Self.Access_Level" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="Access_Level">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Cause__Malaria_T__1CF15040">
+    <End Role="Malaria_Type" Type="Self.Malaria_Type" Multiplicity="0..1" />
+    <End Role="Cause" Type="Self.Cause" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Malaria_Type">
+        <PropertyRef Name="Malaria_Type_ID" />
+      </Principal>
+      <Dependent Role="Cause">
+        <PropertyRef Name="Malaria_Type_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Country__Malaria__173876EA">
+    <End Role="Malaria_Type" Type="Self.Malaria_Type" Multiplicity="0..1" />
+    <End Role="Country" Type="Self.Country" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Malaria_Type">
+        <PropertyRef Name="Malaria_Type_ID" />
+      </Principal>
+      <Dependent Role="Country">
+        <PropertyRef Name="Malaria_Type_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Infection__Malar__286302EC">
+    <End Role="Malaria" Type="Self.Malaria" Multiplicity="0..1" />
+    <End Role="Infection_Cycle" Type="Self.Infection_Cycle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Malaria">
+        <PropertyRef Name="Malaria_ID" />
+      </Principal>
+      <Dependent Role="Infection_Cycle">
+        <PropertyRef Name="Malaria_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Preventat__Malar__1273C1CD">
+    <End Role="Malaria_Type" Type="Self.Malaria_Type" Multiplicity="0..1" />
+    <End Role="Preventative_Measure" Type="Self.Preventative_Measure" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Malaria_Type">
+        <PropertyRef Name="Malaria_Type_ID" />
+      </Principal>
+      <Dependent Role="Preventative_Measure">
+        <PropertyRef Name="Malaria_Type_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Quick_Fac__Malar__2B3F6F97">
+    <End Role="Malaria" Type="Self.Malaria" Multiplicity="0..1" />
+    <End Role="Quick_Fact" Type="Self.Quick_Fact" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Malaria">
+        <PropertyRef Name="Malaria_ID" />
+      </Principal>
+      <Dependent Role="Quick_Fact">
+        <PropertyRef Name="Malaria_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Region__Country___1A14E395">
+    <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+    <End Role="Region" Type="Self.Region" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="Country_ID" />
+      </Principal>
+      <Dependent Role="Region">
+        <PropertyRef Name="Country_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Symptom_T__Malar__1FCDBCEB">
+    <End Role="Malaria_Type" Type="Self.Malaria_Type" Multiplicity="1" />
+    <End Role="Symptom_Type" Type="Self.Symptom_Type" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Malaria_Type">
+        <PropertyRef Name="Malaria_Type_ID" />
+      </Principal>
+      <Dependent Role="Symptom_Type">
+        <PropertyRef Name="Malaria_Type_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Symptom_T__Sympt__20C1E124">
+    <End Role="Symptom" Type="Self.Symptom" Multiplicity="1" />
+    <End Role="Symptom_Type" Type="Self.Symptom_Type" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Symptom">
+        <PropertyRef Name="Symptom_ID" />
+      </Principal>
+      <Dependent Role="Symptom_Type">
+        <PropertyRef Name="Symptom_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Vaccinati__Malar__25869641">
+    <End Role="Malaria" Type="Self.Malaria" Multiplicity="0..1" />
+    <End Role="Vaccination" Type="Self.Vaccination" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Malaria">
+        <PropertyRef Name="Malaria_ID" />
+      </Principal>
+      <Dependent Role="Vaccination">
+        <PropertyRef Name="Malaria_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MalariaModelStoreContainer">
+    <EntitySet Name="Access_Level" EntityType="Self.Access_Level" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Cause" EntityType="Self.Cause" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Infection_Cycle" EntityType="Self.Infection_Cycle" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Malaria" EntityType="Self.Malaria" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Malaria_Type" EntityType="Self.Malaria_Type" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Preventative_Measure" EntityType="Self.Preventative_Measure" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Quick_Fact" EntityType="Self.Quick_Fact" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Region" EntityType="Self.Region" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Symptom" EntityType="Self.Symptom" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Symptom_Type" EntityType="Self.Symptom_Type" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Vaccination" EntityType="Self.Vaccination" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Access_Le__User___300424B4" Association="Self.FK__Access_Le__User___300424B4">
+      <End Role="User" EntitySet="User" />
+      <End Role="Access_Level" EntitySet="Access_Level" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Cause__Malaria_T__1CF15040" Association="Self.FK__Cause__Malaria_T__1CF15040">
+      <End Role="Malaria_Type" EntitySet="Malaria_Type" />
+      <End Role="Cause" EntitySet="Cause" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Country__Malaria__173876EA" Association="Self.FK__Country__Malaria__173876EA">
+      <End Role="Malaria_Type" EntitySet="Malaria_Type" />
+      <End Role="Country" EntitySet="Country" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Infection__Malar__286302EC" Association="Self.FK__Infection__Malar__286302EC">
+      <End Role="Malaria" EntitySet="Malaria" />
+      <End Role="Infection_Cycle" EntitySet="Infection_Cycle" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Preventat__Malar__1273C1CD" Association="Self.FK__Preventat__Malar__1273C1CD">
+      <End Role="Malaria_Type" EntitySet="Malaria_Type" />
+      <End Role="Preventative_Measure" EntitySet="Preventative_Measure" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Quick_Fac__Malar__2B3F6F97" Association="Self.FK__Quick_Fac__Malar__2B3F6F97">
+      <End Role="Malaria" EntitySet="Malaria" />
+      <End Role="Quick_Fact" EntitySet="Quick_Fact" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Region__Country___1A14E395" Association="Self.FK__Region__Country___1A14E395">
+      <End Role="Country" EntitySet="Country" />
+      <End Role="Region" EntitySet="Region" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Symptom_T__Malar__1FCDBCEB" Association="Self.FK__Symptom_T__Malar__1FCDBCEB">
+      <End Role="Malaria_Type" EntitySet="Malaria_Type" />
+      <End Role="Symptom_Type" EntitySet="Symptom_Type" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Symptom_T__Sympt__20C1E124" Association="Self.FK__Symptom_T__Sympt__20C1E124">
+      <End Role="Symptom" EntitySet="Symptom" />
+      <End Role="Symptom_Type" EntitySet="Symptom_Type" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Vaccinati__Malar__25869641" Association="Self.FK__Vaccinati__Malar__25869641">
+      <End Role="Malaria" EntitySet="Malaria" />
+      <End Role="Vaccination" EntitySet="Vaccination" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

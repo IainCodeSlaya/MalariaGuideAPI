@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MalariaModelStoreContainer" CdmEntityContainer="MalariaEntities1">
+    <EntitySetMapping Name="Causes">
+      <EntityTypeMapping TypeName="MalariaModel.Cause">
+        <MappingFragment StoreEntitySet="Cause">
+          <ScalarProperty Name="Cause_ID" ColumnName="Cause_ID" />
+          <ScalarProperty Name="Cause_Name" ColumnName="Cause_Name" />
+          <ScalarProperty Name="Malaria_ID" ColumnName="Malaria_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Countries">
+      <EntityTypeMapping TypeName="MalariaModel.Country">
+        <MappingFragment StoreEntitySet="Country">
+          <ScalarProperty Name="Country_ID" ColumnName="Country_ID" />
+          <ScalarProperty Name="Country_Name" ColumnName="Country_Name" />
+          <ScalarProperty Name="Risk_ID" ColumnName="Risk_ID" />
+          <ScalarProperty Name="Malaria_ID" ColumnName="Malaria_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Health_Admin">
+      <EntityTypeMapping TypeName="MalariaModel.Health_Admin">
+        <MappingFragment StoreEntitySet="Health_Admin">
+          <ScalarProperty Name="Health_Admin_ID" ColumnName="Health_Admin_ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="Contact_Number" ColumnName="Contact_Number" />
+          <ScalarProperty Name="Health_Admin_Number" ColumnName="Health_Admin_Number" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Infection_Cycle">
+      <EntityTypeMapping TypeName="MalariaModel.Infection_Cycle">
+        <MappingFragment StoreEntitySet="Infection_Cycle">
+          <ScalarProperty Name="Cycle_ID" ColumnName="Cycle_ID" />
+          <ScalarProperty Name="Cycle_Head" ColumnName="Cycle_Head" />
+          <ScalarProperty Name="Cycle_Description" ColumnName="Cycle_Description" />
+          <ScalarProperty Name="Malaria_ID" ColumnName="Malaria_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Malarias">
+      <EntityTypeMapping TypeName="MalariaModel.Malaria">
+        <MappingFragment StoreEntitySet="Malaria">
+          <ScalarProperty Name="Malaria_ID" ColumnName="Malaria_ID" />
+          <ScalarProperty Name="Malaria_Background" ColumnName="Malaria_Background" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Malaria_Type">
+      <EntityTypeMapping TypeName="MalariaModel.Malaria_Type">
+        <MappingFragment StoreEntitySet="Malaria_Type">
+          <ScalarProperty Name="Malaria_Type_ID" ColumnName="Malaria_Type_ID" />
+          <ScalarProperty Name="Malaria_Type1" ColumnName="Malaria_Type" />
+          <ScalarProperty Name="Malaria_Type_Description" ColumnName="Malaria_Type_Description" />
+          <ScalarProperty Name="Malaria_ID" ColumnName="Malaria_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Preventative_Measure">
+      <EntityTypeMapping TypeName="MalariaModel.Preventative_Measure">
+        <MappingFragment StoreEntitySet="Preventative_Measure">
+          <ScalarProperty Name="Preventative_Measure_ID" ColumnName="Preventative_Measure_ID" />
+          <ScalarProperty Name="Measure_Description" ColumnName="Measure_Description" />
+          <ScalarProperty Name="Malaria_ID" ColumnName="Malaria_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Quick_Fact">
+      <EntityTypeMapping TypeName="MalariaModel.Quick_Fact">
+        <MappingFragment StoreEntitySet="Quick_Fact">
+          <ScalarProperty Name="Quick_Fact_ID" ColumnName="Quick_Fact_ID" />
+          <ScalarProperty Name="Fact" ColumnName="Fact" />
+          <ScalarProperty Name="Malaria_ID" ColumnName="Malaria_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Risks">
+      <EntityTypeMapping TypeName="MalariaModel.Risk">
+        <MappingFragment StoreEntitySet="Risk">
+          <ScalarProperty Name="Risk_ID" ColumnName="Risk_ID" />
+          <ScalarProperty Name="Risk1" ColumnName="Risk" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Symptoms">
+      <EntityTypeMapping TypeName="MalariaModel.Symptom">
+        <MappingFragment StoreEntitySet="Symptom">
+          <ScalarProperty Name="Symptom_ID" ColumnName="Symptom_ID" />
+          <ScalarProperty Name="Symptom_Name" ColumnName="Symptom_Name" />
+          <ScalarProperty Name="Malaria_ID" ColumnName="Malaria_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vaccinations">
+      <EntityTypeMapping TypeName="MalariaModel.Vaccination">
+        <MappingFragment StoreEntitySet="Vaccination">
+          <ScalarProperty Name="Vaccination_ID" ColumnName="Vaccination_ID" />
+          <ScalarProperty Name="Vaccination_Name" ColumnName="Vaccination_Name" />
+          <ScalarProperty Name="Vaccination_Description" ColumnName="Vaccination_Description" />
+          <ScalarProperty Name="Malaria_ID" ColumnName="Malaria_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
